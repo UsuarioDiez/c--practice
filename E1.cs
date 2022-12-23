@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            FindGreatestNumber();
+            //FindGreatestNumber();
+            CheckIfNumberIsEven();
         }
 
         static void FindGreatestNumber()
@@ -24,6 +25,25 @@
             else
             {
                 Console.WriteLine("Same number");
+            }
+        }
+
+        static void CheckIfNumberIsEven()
+        {
+            Console.WriteLine("Enter a number:");
+            int num;
+
+            try
+            {
+                num = int.Parse(Console.ReadLine());
+                Console.WriteLine($"Is the number even? {CheckNumber(num)}");
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            static bool CheckNumber(int n)
+            {
+                return (n % 2 == 0 ? true : false);
             }
         }
     }
