@@ -9,7 +9,8 @@
             //LongestString();
             //GetHypotenuseFromSides();
             //CountTo100();
-            CelsiusToFarenheit();
+            //CelsiusToFarenheit();
+            ProductOfListElements();
         }
 
         static void FindGreatestNumber()
@@ -133,6 +134,37 @@
             static double ToFarenheit(double temp)
             {
                 return (1.8 * temp + 32);
+            }
+        }
+
+        static void ProductOfListElements()
+        {
+            
+            List<double> myList = new List<double> { };
+            try
+            {
+                Console.WriteLine("Enter size of list");
+                int size = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the values:");
+                while (myList.Count < size)
+                {
+                    myList.Add(double.Parse(Console.ReadLine()));
+                }
+                Console.WriteLine($"The product of the items is = {ListProduct(myList)}");
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("take care of your values");
+            }
+
+            static double ListProduct(List<double> myList)
+            {
+                double result = 1;
+                foreach (double item in myList)
+                {
+                    result = item * result;
+                }
+                return result;
             }
         }
     }
