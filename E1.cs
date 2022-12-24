@@ -14,7 +14,8 @@
             //Factorial();
             //ListAverage();
             //FindBiggestNumber();
-            GetPersonsAge();
+            //GetPersonsAge();
+            FizzBuzz();
         }
 
         static void FindGreatestNumber()
@@ -290,6 +291,25 @@
             {
                 int time_diff = DateTime.Now.Year-birthday.Year;
                 return time_diff;
+            }
+        }
+
+        static void FizzBuzz()
+        {
+            //Write a fizzbuzz (print Fizz every 3 multiple and Buzz every 5 multiple)
+            for(int i = 1; i <= 100; i++)
+            {
+                if (i%5==0&&i%3==0)
+                {
+                    Console.WriteLine("FizzBuzz");
+                }else if (i % 5 == 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else if(i % 3 == 0)
+                {
+                    Console.WriteLine("Fizz");
+                }
             }
         }
     }
