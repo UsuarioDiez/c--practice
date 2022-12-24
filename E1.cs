@@ -8,7 +8,8 @@
             //CheckIfNumberIsEven();
             //LongestString();
             //GetHypotenuseFromSides();
-            CountTo100();
+            //CountTo100();
+            CelsiusToFarenheit();
         }
 
         static void FindGreatestNumber()
@@ -111,6 +112,27 @@
             for (int i = 0; i <= 100; i += 2)
             {
                 Console.WriteLine(i);
+            }
+        }
+
+        static void CelsiusToFarenheit()
+        {
+            //Write a method that takes a temperature as Celsius and transformes it to Farenheit
+            try
+            {
+                Console.WriteLine("Enter temp in Celsius");
+                double temp = double.Parse(Console.ReadLine());
+                Console.WriteLine($"The temp in Celsius is = {ToFarenheit(temp)}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("haha, nice try");
+            }
+
+
+            static double ToFarenheit(double temp)
+            {
+                return (1.8 * temp + 32);
             }
         }
     }
