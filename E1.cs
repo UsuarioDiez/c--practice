@@ -6,7 +6,8 @@
         {
             //FindGreatestNumber();
             //CheckIfNumberIsEven();
-            LongestString();
+            //LongestString();
+            GetHypotenuseFromSides();
         }
 
         static void FindGreatestNumber()
@@ -76,6 +77,29 @@
                     result = "Both have the same length";
                 }
                 return result;
+            }
+        }
+
+        static void GetHypotenuseFromSides()
+        {
+            try
+            {
+                Console.WriteLine("Enter one side");
+                double c1 = double.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter second side");
+                double c2 = double.Parse(Console.ReadLine());
+
+                Console.WriteLine($"The hypotenuse is = {CalcHypotenuse(c1, c2)}");
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("You sure entered a text, very funny");
+            }
+
+            static double CalcHypotenuse(double c1, double c2)
+            {
+                return Math.Sqrt(c1*c1+c2*c2);
             }
         }
     }
