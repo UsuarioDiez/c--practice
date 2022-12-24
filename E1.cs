@@ -7,7 +7,8 @@
             //FindGreatestNumber();
             //CheckIfNumberIsEven();
             //LongestString();
-            GetHypotenuseFromSides();
+            //GetHypotenuseFromSides();
+            CountTo100();
         }
 
         static void FindGreatestNumber()
@@ -82,6 +83,7 @@
 
         static void GetHypotenuseFromSides()
         {
+            //Write a method that returns the hypotenuse given two sides of the triangle
             try
             {
                 Console.WriteLine("Enter one side");
@@ -100,6 +102,15 @@
             static double CalcHypotenuse(double c1, double c2)
             {
                 return Math.Sqrt(c1*c1+c2*c2);
+            }
+        }
+
+        static void CountTo100()
+        {
+            //Write a method that goes from 0 to 100 in a two series
+            for (int i = 0; i <= 100; i += 2)
+            {
+                Console.WriteLine(i);
             }
         }
     }
