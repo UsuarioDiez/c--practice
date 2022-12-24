@@ -11,7 +11,8 @@
             //CountTo100();
             //CelsiusToFarenheit();
             //ProductOfListElements();
-            Factorial();
+            //Factorial();
+            ListAverage();
         }
 
         static void FindGreatestNumber()
@@ -191,6 +192,38 @@
                     n--;
                 }
                 return result;
+            }
+        }
+
+        static void ListAverage()
+        {
+            //Write a method that takes a list and returns the average of the numbers
+            List<double> myList = new List<double> { };
+            try
+            {
+                Console.WriteLine("Enter size of list");
+                int size = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the values:");
+                while (myList.Count < size)
+                {
+                    myList.Add(double.Parse(Console.ReadLine()));
+                }
+                Console.WriteLine($"The average of the items is = {GetAverage(myList)}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("take care of your values");
+            }
+
+            static double GetAverage(List<double> myList)
+            {
+                double sum = 0;
+                foreach(double item in myList)
+                {
+                    sum = sum + item;
+                }
+                return sum / myList.Count;
             }
         }
     }
