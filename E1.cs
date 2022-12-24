@@ -10,7 +10,8 @@
             //GetHypotenuseFromSides();
             //CountTo100();
             //CelsiusToFarenheit();
-            ProductOfListElements();
+            //ProductOfListElements();
+            Factorial();
         }
 
         static void FindGreatestNumber()
@@ -163,6 +164,31 @@
                 foreach (double item in myList)
                 {
                     result = item * result;
+                }
+                return result;
+            }
+        }
+
+        static void Factorial()
+        {
+            //Write a method that takes an int and returns the factorial (!)
+            Console.WriteLine("Enter an integer");
+            try
+            {
+                int n = int.Parse(Console.ReadLine());
+                Console.WriteLine($"{n}! = {GetFactorial(n)}");
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Take care of your values, again");
+            }
+            static int GetFactorial(int n)
+            {
+                int result=1;
+                while (n > 0)
+                {
+                    result = result * n;
+                    n--;
                 }
                 return result;
             }
