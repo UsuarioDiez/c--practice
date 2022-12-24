@@ -13,7 +13,8 @@
             //ProductOfListElements();
             //Factorial();
             //ListAverage();
-            FindBiggestNumber();
+            //FindBiggestNumber();
+            GetPersonsAge();
         }
 
         static void FindGreatestNumber()
@@ -230,6 +231,7 @@
 
         static void FindBiggestNumber()
         {
+            //Write a method that takes a list of numbers and returns the biggest of them
             List<double> myList = new List<double> { };
             try
             {
@@ -259,6 +261,35 @@
                     }
                 }
                 return max;
+            }
+        }
+
+        static void GetPersonsAge()
+        {
+            //Write a method that receives a Datetime with the birthday of a person and returns its age
+
+            try
+            {
+                Console.WriteLine("Enter year");
+                int y = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter month");
+                int m = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter day");
+                int d = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"You are {GetAge(new DateTime(y, m, d))} years old");           
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Take care of your values");
+            }
+
+            static int GetAge(DateTime birthday)
+            {
+                int time_diff = DateTime.Now.Year-birthday.Year;
+                return time_diff;
             }
         }
     }
