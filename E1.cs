@@ -12,7 +12,8 @@
             //CelsiusToFarenheit();
             //ProductOfListElements();
             //Factorial();
-            ListAverage();
+            //ListAverage();
+            FindBiggestNumber();
         }
 
         static void FindGreatestNumber()
@@ -224,6 +225,40 @@
                     sum = sum + item;
                 }
                 return sum / myList.Count;
+            }
+        }
+
+        static void FindBiggestNumber()
+        {
+            List<double> myList = new List<double> { };
+            try
+            {
+                Console.WriteLine("Enter size of list");
+                int size = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the values:");
+                while (myList.Count < size)
+                {
+                    myList.Add(double.Parse(Console.ReadLine()));
+                }
+                Console.WriteLine($"The biggest number of the list is = {GetBiggestNumber(myList)}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("take care of your values");
+            }
+
+            static double GetBiggestNumber(List<double> myList)
+            {
+                double max = myList[0];
+                foreach(double item in myList)
+                {
+                    if (item > max)
+                    {
+                        max = item;
+                    }
+                }
+                return max;
             }
         }
     }
