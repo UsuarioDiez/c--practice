@@ -15,7 +15,8 @@
             //ListAverage();
             //FindBiggestNumber();
             //GetPersonsAge();
-            FizzBuzz();
+            //FizzBuzz();
+            ReverseList();
         }
 
         static void FindGreatestNumber()
@@ -310,6 +311,33 @@
                 {
                     Console.WriteLine("Fizz");
                 }
+            }
+        }
+
+        static void ReverseList()
+        {
+            //Write a method that takes a list and returns it reversed
+            List<string> myList = new List<string> { };
+            Console.WriteLine("How many items?");
+            int size = int.Parse(Console.ReadLine());
+            for (int i=0; i < size; i++)
+            {
+                myList.Add(Console.ReadLine());
+            }
+
+            Console.WriteLine(String.Join(",", GetListReversed(myList)));
+            
+            static List<string> GetListReversed(List<string> myList)
+            {
+                string tmp;
+                for (int i = 0; i <= (myList.Count-1)/2; i++)
+                {
+                    Console.WriteLine(i);
+                    tmp = myList[myList.Count - 1-i];
+                    myList[myList.Count - 1 - i] = myList[i];
+                    myList[i] = tmp;
+                }
+                return myList;
             }
         }
     }
