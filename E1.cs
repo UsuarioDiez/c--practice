@@ -17,7 +17,8 @@
             //GetPersonsAge();
             //FizzBuzz();
             //ReverseList();
-            OrderListBySize();
+            //OrderListBySize();
+            FirstStringLetter();
         }
 
         static void FindGreatestNumber()
@@ -334,6 +335,13 @@
                 }
                 return myListSorted;
             }
+        }
+
+        static void FirstStringLetter()
+        {
+            Console.WriteLine("Write something");
+            string str = Console.ReadLine();
+            Console.WriteLine($"The first letter of {str} is {str.Substring(0,1)}");
         }
 
         //Method for creating List from input and convert it to double List
