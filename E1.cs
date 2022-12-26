@@ -145,23 +145,12 @@
 
         static void ProductOfListElements()
         {
+
+            //Write a method that returns the product of the items inside a double List
+
+            List<double> myList = ListToDouble(CreateList());
             
-            List<double> myList = new List<double> { };
-            try
-            {
-                Console.WriteLine("Enter size of list");
-                int size = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the values:");
-                while (myList.Count < size)
-                {
-                    myList.Add(double.Parse(Console.ReadLine()));
-                }
-                Console.WriteLine($"The product of the items is = {ListProduct(myList)}");
-            }catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("take care of your values");
-            }
+            if (myList.Count>0) Console.WriteLine($"The product of the items is = {ListProduct(myList)}");
 
             static double ListProduct(List<double> myList)
             {
@@ -202,23 +191,9 @@
         static void ListAverage()
         {
             //Write a method that takes a list and returns the average of the numbers
-            List<double> myList = new List<double> { };
-            try
-            {
-                Console.WriteLine("Enter size of list");
-                int size = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the values:");
-                while (myList.Count < size)
-                {
-                    myList.Add(double.Parse(Console.ReadLine()));
-                }
-                Console.WriteLine($"The average of the items is = {GetAverage(myList)}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("take care of your values");
-            }
+            List<double> myList = ListToDouble(CreateList());
+
+            if (myList.Count>0) Console.WriteLine($"The average of the items is = {GetAverage(myList)}");
 
             static double GetAverage(List<double> myList)
             {
@@ -234,23 +209,9 @@
         static void FindBiggestNumber()
         {
             //Write a method that takes a list of numbers and returns the biggest of them
-            List<double> myList = new List<double> { };
-            try
-            {
-                Console.WriteLine("Enter size of list");
-                int size = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the values:");
-                while (myList.Count < size)
-                {
-                    myList.Add(double.Parse(Console.ReadLine()));
-                }
-                Console.WriteLine($"The biggest number of the list is = {GetBiggestNumber(myList)}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("take care of your values");
-            }
+            List<double> myList = ListToDouble(CreateList());
+
+            if (myList.Count > 0) Console.WriteLine($"The biggest number of the list is = {GetBiggestNumber(myList)}");
 
             static double GetBiggestNumber(List<double> myList)
             {
@@ -317,15 +278,9 @@
         static void ReverseList()
         {
             //Write a method that takes a list and returns it reversed
-            List<string> myList = new List<string> { };
-            Console.WriteLine("How many items?");
-            int size = int.Parse(Console.ReadLine());
-            for (int i=0; i < size; i++)
-            {
-                myList.Add(Console.ReadLine());
-            }
+            List<string> myList = CreateList();
 
-            Console.WriteLine(String.Join(",", GetListReversed(myList)));
+            if (myList.Count>0) Console.WriteLine(String.Join(",", GetListReversed(myList)));
             
             static List<string> GetListReversed(List<string> myList)
             {
@@ -340,5 +295,67 @@
                 return myList;
             }
         }
+
+        //Method for creating List from input and convert it to double List
+        static List<string> CreateList()
+        {
+            List<string> myList = new List<string> { };
+            try
+            {
+                int size;
+                do
+                {
+                    Console.WriteLine("Enter size of list");
+                     size= int.Parse(Console.ReadLine());
+                } while (size < 0);
+                Console.WriteLine("Enter the values:");
+                while (myList.Count < size)
+                {
+                    myList.Add(Console.ReadLine());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("take care of your values");
+            }
+            return myList;
+        }
+
+        static List<double> ListToDouble(List<string> myList)
+        {
+            List<double> myDoubleList=new List<double> { };
+            try
+            {
+                myList.ForEach(delegate (string item)
+                {
+                    myDoubleList.Add(double.Parse(item));
+                });
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Not all the items can be converted to double");
+            }
+
+            return myDoubleList;
+        }
+
+        //static List<int> ListToInt(List<string> myList)
+        //{
+        //    List<int> myIntList = new List<int> { };
+        //    try
+        //    {
+        //        myList.ForEach(delegate (string item)
+        //        {
+        //            myIntList.Add(int.Parse(item));
+        //        });
+        //    }catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //        Console.WriteLine("Not all items could be converted to int");
+        //    }
+            
+        //    return myIntList;
+        //}
     }
 }
