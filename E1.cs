@@ -16,7 +16,8 @@
             //FindBiggestNumber();
             //GetPersonsAge();
             //FizzBuzz();
-            ReverseList();
+            //ReverseList();
+            OrderListBySize();
         }
 
         static void FindGreatestNumber()
@@ -50,7 +51,8 @@
             {
                 num = int.Parse(Console.ReadLine());
                 Console.WriteLine($"Is the number even? {CheckNumber(num)}");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -70,9 +72,9 @@
             Console.WriteLine("Enter a second string:");
             string s2 = Console.ReadLine();
 
-            Console.WriteLine($"The longest is: {ReturnLongestString(s1,s2)}");
+            Console.WriteLine($"The longest is: {ReturnLongestString(s1, s2)}");
 
-            static string ReturnLongestString(string s1,string s2)
+            static string ReturnLongestString(string s1, string s2)
             {
 
                 string result;
@@ -101,7 +103,8 @@
                 double c2 = double.Parse(Console.ReadLine());
 
                 Console.WriteLine($"The hypotenuse is = {CalcHypotenuse(c1, c2)}");
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("You sure entered a text, very funny");
@@ -109,7 +112,7 @@
 
             static double CalcHypotenuse(double c1, double c2)
             {
-                return Math.Sqrt(c1*c1+c2*c2);
+                return Math.Sqrt(c1 * c1 + c2 * c2);
             }
         }
 
@@ -149,8 +152,8 @@
             //Write a method that returns the product of the items inside a double List
 
             List<double> myList = ListToDouble(CreateList());
-            
-            if (myList.Count>0) Console.WriteLine($"The product of the items is = {ListProduct(myList)}");
+
+            if (myList.Count > 0) Console.WriteLine($"The product of the items is = {ListProduct(myList)}");
 
             static double ListProduct(List<double> myList)
             {
@@ -171,14 +174,15 @@
             {
                 int n = int.Parse(Console.ReadLine());
                 Console.WriteLine($"{n}! = {GetFactorial(n)}");
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Take care of your values, again");
             }
             static int GetFactorial(int n)
             {
-                int result=1;
+                int result = 1;
                 while (n > 0)
                 {
                     result = result * n;
@@ -193,12 +197,12 @@
             //Write a method that takes a list and returns the average of the numbers
             List<double> myList = ListToDouble(CreateList());
 
-            if (myList.Count>0) Console.WriteLine($"The average of the items is = {GetAverage(myList)}");
+            if (myList.Count > 0) Console.WriteLine($"The average of the items is = {GetAverage(myList)}");
 
             static double GetAverage(List<double> myList)
             {
                 double sum = 0;
-                foreach(double item in myList)
+                foreach (double item in myList)
                 {
                     sum = sum + item;
                 }
@@ -216,7 +220,7 @@
             static double GetBiggestNumber(List<double> myList)
             {
                 double max = myList[0];
-                foreach(double item in myList)
+                foreach (double item in myList)
                 {
                     if (item > max)
                     {
@@ -242,8 +246,9 @@
                 Console.WriteLine("Enter day");
                 int d = int.Parse(Console.ReadLine());
 
-                Console.WriteLine($"You are {GetAge(new DateTime(y, m, d))} years old");           
-            }catch(Exception ex)
+                Console.WriteLine($"You are {GetAge(new DateTime(y, m, d))} years old");
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Take care of your values");
@@ -251,7 +256,7 @@
 
             static int GetAge(DateTime birthday)
             {
-                int time_diff = DateTime.Now.Year-birthday.Year;
+                int time_diff = DateTime.Now.Year - birthday.Year;
                 return time_diff;
             }
         }
@@ -259,16 +264,17 @@
         static void FizzBuzz()
         {
             //Write a fizzbuzz (print Fizz every 3 multiple and Buzz every 5 multiple)
-            for(int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 100; i++)
             {
-                if (i%5==0&&i%3==0)
+                if (i % 5 == 0 && i % 3 == 0)
                 {
                     Console.WriteLine("FizzBuzz");
-                }else if (i % 5 == 0)
+                }
+                else if (i % 5 == 0)
                 {
                     Console.WriteLine("Buzz");
                 }
-                else if(i % 3 == 0)
+                else if (i % 3 == 0)
                 {
                     Console.WriteLine("Fizz");
                 }
@@ -280,19 +286,53 @@
             //Write a method that takes a list and returns it reversed
             List<string> myList = CreateList();
 
-            if (myList.Count>0) Console.WriteLine(String.Join(",", GetListReversed(myList)));
-            
+            if (myList.Count > 0) Console.WriteLine(String.Join(",", GetListReversed(myList)));
+
             static List<string> GetListReversed(List<string> myList)
             {
                 string tmp;
-                for (int i = 0; i <= (myList.Count-1)/2; i++)
+                for (int i = 0; i <= (myList.Count - 1) / 2; i++)
                 {
-                    Console.WriteLine(i);
-                    tmp = myList[myList.Count - 1-i];
+                    tmp = myList[myList.Count - 1 - i];
                     myList[myList.Count - 1 - i] = myList[i];
                     myList[i] = tmp;
                 }
                 return myList;
+            }
+        }
+
+        static void OrderListBySize()
+        {
+            //Create a method that takes a list of numbers and returns a list with the same numbers but from the smallest to the greatest
+            List<double> myList = ListToDouble(CreateList());
+
+            if (myList.Count > 0) Console.WriteLine(String.Join(",", GetSortedListByHand(myList)));
+
+            //static List<double> GetSortedList(List<double> myList)
+            //{
+            //    myList.Sort();
+            //    return myList;
+            //}
+
+            static List<double> GetSortedListByHand(List<double> myList)
+            {
+                List<double> myListSorted = new List<double> { };
+                int size = myList.Count;
+                double min;
+                for (int i = 0; i < size; i++)
+                {
+                    min = myList[0];
+                    foreach (double item in myList)
+                    {
+                        if (item < min)
+                        {
+                            min = item;
+                        }
+                    }
+                    myListSorted.Add(min);
+                    myList.Remove(min);
+                }
+                return myListSorted;
             }
         }
 
@@ -306,7 +346,7 @@
                 do
                 {
                     Console.WriteLine("Enter size of list");
-                     size= int.Parse(Console.ReadLine());
+                    size = int.Parse(Console.ReadLine());
                 } while (size < 0);
                 Console.WriteLine("Enter the values:");
                 while (myList.Count < size)
@@ -324,19 +364,19 @@
 
         static List<double> ListToDouble(List<string> myList)
         {
-            List<double> myDoubleList=new List<double> { };
+            List<double> myDoubleList = new List<double> { };
             try
             {
                 myList.ForEach(delegate (string item)
                 {
                     myDoubleList.Add(double.Parse(item));
                 });
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Not all the items can be converted to double");
             }
-
             return myDoubleList;
         }
 
@@ -354,7 +394,7 @@
         //        Console.WriteLine(ex.Message);
         //        Console.WriteLine("Not all items could be converted to int");
         //    }
-            
+
         //    return myIntList;
         //}
     }
